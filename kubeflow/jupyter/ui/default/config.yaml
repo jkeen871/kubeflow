@@ -81,23 +81,25 @@ spawnerFormDefaults:
         value: ReadWriteOnce
   dataVolumes:
     # List of additional Data Volumes to be attached to the user's Notebook
-    value: []
+    value: [logdir]
     # Each Data Volume is declared with the following attributes:
     # Type, Name, Size, MountPath and Access Mode
     #
     # For example, a list with 2 Data Volumes:
     #value:
-    #  - value:
-    #      type:
-    #        value: New
-    #      name:
-    #        value: {username}{servername}-vol-1
-    #      size:
-    #        value: '10'
-    #      mountPath:
-    #        value: /home/jovyan/{username}{servername}-vol-1
-    #      accessModes:
-    #        value: ReadWriteOnce
+    value:
+     - value:
+          type:
+            value: logdir
+          name:
+            value: {username}{servername}-logdir-1
+          size:
+            value: '10'
+          mountPath:
+            value: /home/jovyan/{username}{servername}-logdir-1
+          accessModes:
+            value: ReadWriteMany
+
     #  - value:
     #      type:
     #        value: New

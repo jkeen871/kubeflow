@@ -10,6 +10,9 @@
 // @optionalParam defaultTbImage string tensorflow/tensorflow:1.8.0 default tensorboard image to use
 // @optionalParam injectIstio string false Whether to inject istio sidecar; should be true or false.
 // @optionalParam clusterDomain string cluster.local DNS config to cluster domain.
+// @optionalParam pvc string logdir name of storage class
+// @optionalParam pvcMount string /opt/logdir Mountpoint for logdir
+// @optionalParam modelStorageType string pvc Model Storage Type
 
 local tensorboard = import "kubeflow/tensorboard/tensorboard.libsonnet";
 local instance = tensorboard.new(env, params);

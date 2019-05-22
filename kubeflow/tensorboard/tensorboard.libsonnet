@@ -107,7 +107,19 @@
       ) +
       deployment.mixin.metadata.
         withNamespace(params.namespace).
-        withLabelsMixin(params.labels),
+        withLabelsMixin(params.labels), +
+      deployment.mixin.spec.template.spec.
+        withVolumesMixin(
+        if params.modelStorageType == "pvc" then
+          [{
+            name: "logdir",
+            persistentVolumeClaim: {
+              claimName: params.pvc,
+            },
+          }]
+        else [],
+      ),
+
     tbDeployment:: tbDeployment,
 
     parts:: self,
